@@ -1,6 +1,7 @@
 "use client";
 
 import Converter from "../components/Converter";
+import CurrencyConverter from "../components/CurrencyConverter";
 import { BaseUnit } from "../components/UnitSelect";
 
 const lengthUnits: BaseUnit[] = [
@@ -111,9 +112,10 @@ const temperatureUnits: BaseUnit[] = [
 export default function ClientConverters() {
   return (
     <div className="flex flex-col gap-4">
-      <Converter units={lengthUnits} />
-      <Converter units={weightUnits} />
-      <Converter units={temperatureUnits} />
+      <CurrencyConverter />
+      <Converter units={lengthUnits} title={"Length converter"} />
+      <Converter units={weightUnits} title={"Weight converter"} />
+      <Converter units={temperatureUnits} title={"Temperature converter"} />
     </div>
   );
 }

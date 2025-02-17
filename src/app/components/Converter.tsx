@@ -5,13 +5,16 @@ import { BaseUnit, UnitSelect } from "./UnitSelect";
 
 type Props = {
   units: BaseUnit[];
+  title?: string;
+  defaultUnitA?: BaseUnit;
+  defaultUnitB?: BaseUnit;
 };
 
-function Converter({ units }: Props) {
+function Converter({ units, title, defaultUnitA, defaultUnitB }: Props) {
   const [valueA, setValueA] = useState<string>("");
   const [valueB, setValueB] = useState<string>("");
-  const [unitA, setUnitA] = useState<BaseUnit>(units[0]);
-  const [unitB, setUnitB] = useState<BaseUnit>(units[1]);
+  const [unitA, setUnitA] = useState<BaseUnit>(defaultUnitA ?? units[0]);
+  const [unitB, setUnitB] = useState<BaseUnit>(defaultUnitB ?? units[1]);
 
   const handleChangeA = (value: string) => {
     setValueA(value);
@@ -61,7 +64,7 @@ function Converter({ units }: Props) {
 
   return (
     <div className="w-full max-w-fit mx-auto p-6 bg-white rounded-md shadow-sm">
-      <h1 className="text-xl font-bold mb-4">Length Converter</h1>
+      <h1 className="text-xl font-bold mb-4">{title}</h1>
 
       <div className="flex gap-3">
         <div className="flex items-center gap-2 mb-4">
