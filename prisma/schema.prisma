@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model exchange_rates {
+  id            Int    @id @default(autoincrement())
+  base_currency String @db.VarChar(3)
+  rates         Json
+  fetched_at    BigInt
+}
